@@ -3,7 +3,6 @@ package ua.ip.hw6.controller.developers;
 import ua.ip.hw6.dao.DevelopersDao;
 import ua.ip.hw6.storage.DatabaseInitConnection;
 import ua.ip.hw6.storage.DatabaseSqlManagerConnector;
-import ua.ip.hw6.table.Developers;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +17,6 @@ public class DeleteDevelopers extends HttpServlet {
     @Override
     public void init() throws ServletException {
         DatabaseSqlManagerConnector initConnection = DatabaseInitConnection.getInitService();
-        developersDao = new DevelopersDao(initConnection);
     }
 
     @Override

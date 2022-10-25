@@ -29,8 +29,8 @@ public class CreateCustomer extends HttpServlet {
         Customers customer = new Customers();
         customer.setName(customerName);
         customer.setWebsite(customerWebsite);
-        if (customerDao.create(customer)) {
+        customerDao.create(customer);
             req.getRequestDispatcher("/WEB-INF/jsp/customers/createCustomer.jsp").forward(req, resp);
-        }
+
     }
 }

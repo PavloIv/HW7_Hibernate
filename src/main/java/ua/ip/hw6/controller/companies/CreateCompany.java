@@ -27,10 +27,10 @@ public class CreateCompany extends HttpServlet {
 
         Companies company = new Companies();
         company.setName(companyName);
-        company.setYear_of_foundation(companyYearFoundation);
+        company.setYearOfFoundation(companyYearFoundation);
 
-        if (companiesDAO.create(company)) {
-            req.getRequestDispatcher("/WEB-INF/jsp/companies/createCompany.jsp").forward(req, resp);
-        }
+        companiesDAO.create(company);
+        req.getRequestDispatcher("/WEB-INF/jsp/companies/createCompany.jsp").forward(req, resp);
+
     }
 }

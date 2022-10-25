@@ -1,7 +1,6 @@
 package ua.ip.hw6.controller.customers;
 
 import ua.ip.hw6.dao.CustomerDao;
-import ua.ip.hw6.dao.DevelopersDao;
 import ua.ip.hw6.storage.DatabaseInitConnection;
 import ua.ip.hw6.storage.DatabaseSqlManagerConnector;
 

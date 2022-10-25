@@ -17,7 +17,6 @@ public class SalaryOnProject extends HttpServlet {
     @Override
     public void init() throws ServletException {
         DatabaseSqlManagerConnector initConnection = DatabaseInitConnection.getInitService();
-        developersDao = new DevelopersDao(initConnection);
     }
 
     @Override
@@ -26,10 +25,10 @@ public class SalaryOnProject extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Integer developerId = Integer.valueOf(req.getParameter("developerId"));
-
-        Integer salaryOnProject =  developersDao.calculateSalaryOnProjectFromId(developerId);
-        req.setAttribute("salaryOnProject", salaryOnProject);
-        req.getRequestDispatcher("/WEB-INF/jsp/developers/salaryOnProject.jsp").forward(req, resp);
+//        Integer developerId = Integer.valueOf(req.getParameter("developerId"));
+//
+//        Integer salaryOnProject =  developersDao.calculateSalaryOnProjectFromId(developerId);
+//        req.setAttribute("salaryOnProject", salaryOnProject);
+//        req.getRequestDispatcher("/WEB-INF/jsp/developers/salaryOnProject.jsp").forward(req, resp);
     }
 }

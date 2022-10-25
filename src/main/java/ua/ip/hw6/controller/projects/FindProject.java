@@ -3,7 +3,6 @@ package ua.ip.hw6.controller.projects;
 import ua.ip.hw6.dao.ProjectsDao;
 import ua.ip.hw6.storage.DatabaseInitConnection;
 import ua.ip.hw6.storage.DatabaseSqlManagerConnector;
-import ua.ip.hw6.table.Developers;
 import ua.ip.hw6.table.Projects;
 
 import javax.servlet.ServletException;

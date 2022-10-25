@@ -1,5 +1,6 @@
 package ua.ip.hw6.controller.developers;
 
+import lombok.SneakyThrows;
 import ua.ip.hw6.dao.DevelopersDao;
 import ua.ip.hw6.storage.DatabaseInitConnection;
 import ua.ip.hw6.storage.DatabaseSqlManagerConnector;
@@ -18,9 +19,9 @@ public class FindDeveloper extends HttpServlet {
     @Override
     public void init() throws ServletException {
         DatabaseSqlManagerConnector initConnection = DatabaseInitConnection.getInitService();
-        developersDao = new DevelopersDao(initConnection);
     }
 
+    @SneakyThrows
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String developerId = req.getParameter("developerId");

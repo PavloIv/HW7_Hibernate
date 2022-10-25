@@ -19,7 +19,6 @@ public class ProgrammerOnLanguage extends HttpServlet {
     @Override
     public void init() throws ServletException {
         DatabaseSqlManagerConnector initConnection = DatabaseInitConnection.getInitService();
-        developersDao = new DevelopersDao(initConnection);
     }
 
     @Override
@@ -31,8 +30,8 @@ public class ProgrammerOnLanguage extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String language = req.getParameter("language");
 
-        List<Developers> developers =  developersDao.showProgrammerOnLanguage(language);
-        req.setAttribute("developers", developers);
-        req.getRequestDispatcher("/WEB-INF/jsp/developers/programmerOnLanguage.jsp").forward(req, resp);
+//        List<Developers> developers =  developersDao.showProgrammerOnLanguage(language);
+//        req.setAttribute("developers", developers);
+//        req.getRequestDispatcher("/WEB-INF/jsp/developers/programmerOnLanguage.jsp").forward(req, resp);
     }
 }

@@ -29,7 +29,7 @@ public class UpdateCompany extends HttpServlet {
         Companies company = new Companies();
         company.setId(companyId);
         company.setName(companyName);
-        company.setYear_of_foundation(companyYearFoundation);
+        company.setYearOfFoundation(companyYearFoundation);
 
         if (companiesDAO.update(company)) {
             req.getRequestDispatcher("/WEB-INF/jsp/companies/updateCompany.jsp").forward(req, resp);

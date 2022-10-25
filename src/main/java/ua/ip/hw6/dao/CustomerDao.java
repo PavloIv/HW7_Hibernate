@@ -36,15 +36,13 @@ public class CustomerDao implements ServiceCrud<Customers>{
     }
 
     @Override
-    public boolean create(Customers entity) {
+    public void create(Customers entity) {
         try {
             INSERT_CUSTOMER.setString(1, entity.getName());
             INSERT_CUSTOMER.setString(2,entity.getWebsite());
-            return INSERT_CUSTOMER.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
     }
 
 

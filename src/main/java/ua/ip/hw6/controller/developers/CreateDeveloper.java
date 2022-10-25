@@ -1,8 +1,7 @@
 package ua.ip.hw6.controller.developers;
 
 import ua.ip.hw6.dao.DevelopersDao;
-import ua.ip.hw6.storage.DatabaseInitConnection;
-import ua.ip.hw6.storage.DatabaseSqlManagerConnector;
+import ua.ip.hw6.storage.HibernateProvider;
 import ua.ip.hw6.table.Developers;
 
 import javax.servlet.ServletException;
@@ -15,10 +14,11 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/developers/createDevelopers")
 public class CreateDeveloper extends HttpServlet {
     private DevelopersDao developersDao;
+
     @Override
     public void init() throws ServletException {
-        DatabaseSqlManagerConnector initConnection = DatabaseInitConnection.getInitService();
-        developersDao = new DevelopersDao(initConnection);
+        HibernateProvider dbProvider = new HibernateProvider();
+        developersDao = new DevelopersDao(dbProvider);
     }
 
     @Override
@@ -32,8 +32,8 @@ public class CreateDeveloper extends HttpServlet {
         developer.setAge(developerAge);
         developer.setSex(developerSex);
         developer.setSalary(developerSalary);
-        if (developersDao.create(developer)) {
-            req.getRequestDispatcher("/WEB-INF/jsp/developers/createDevelopers.jsp").forward(req, resp);
-        }
+        developersDao.create(developer);
+        req.getRequestDispatcher("/WEB-INF/jsp/developers/createDevelopers.jsp").forward(req, resp);
+
     }
 }

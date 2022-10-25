@@ -1,42 +1,36 @@
 package ua.ip.hw6.table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "customers")
+@ToString
+@Getter
+@Setter
+@NoArgsConstructor
 public  class Customers {
+    @Id @GeneratedValue
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "website")
     private String website;
+
+    @OneToMany(mappedBy = "customer")
+    List<Projects> projects =new ArrayList<>();
 
     public Customers(Integer id, String name, String website) {
         this.id = id;
         this.name = name;
-        this.website = website;
-    }
-
-    public Customers() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getWebsite() {
-        return website;
-    }
-
-    public void setWebsite(String website) {
         this.website = website;
     }
 
@@ -48,12 +42,4 @@ public  class Customers {
         return Objects.equals(id, customers.id) && Objects.equals(name, customers.name) && Objects.equals(website, customers.website);
     }
 
-    @Override
-    public String toString() {
-        return  "\n" + "{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", Website='" + website + '\'' +
-                '}' + "\n";
-    }
 }

@@ -1,10 +1,8 @@
 package ua.ip.hw6.controller.projects;
 
-import ua.ip.hw6.dao.DevelopersDao;
 import ua.ip.hw6.dao.ProjectsDao;
 import ua.ip.hw6.storage.DatabaseInitConnection;
 import ua.ip.hw6.storage.DatabaseSqlManagerConnector;
-import ua.ip.hw6.table.Developers;
 import ua.ip.hw6.table.Projects;
 
 import javax.servlet.ServletException;
@@ -34,8 +32,6 @@ public class UpdateProject extends HttpServlet {
         project.setId(projectId);
         project.setName(projectName);
         project.setDescription(projectDescription);
-        project.setCompany_id(companyId);
-        project.setCustomer_id(customerId);
 
         if (projectsDao.update(project)) {
             req.getRequestDispatcher("/WEB-INF/jsp/projects/updateProject.jsp").forward(req, resp);

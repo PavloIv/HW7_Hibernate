@@ -34,15 +34,13 @@ public class SkillsDao implements ServiceCrud<Skills> {
     }
 
     @Override
-    public boolean create(Skills entity) {
+    public void create(Skills entity) {
         try {
             INSERT_SKILL.setString(1, entity.getLanguage());
             INSERT_SKILL.setString(2, entity.getLevel());
-            return INSERT_SKILL.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
     }
 
     @Override

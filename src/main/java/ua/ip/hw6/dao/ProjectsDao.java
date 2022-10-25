@@ -4,8 +4,10 @@ import ua.ip.hw6.storage.DatabaseSqlManagerConnector;
 import ua.ip.hw6.table.Projects;
 import ua.ip.hw6.table.ProjectsFormatCreationDateNameNumberProgrammer;
 
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,19 +43,14 @@ public class ProjectsDao implements ServiceCrud<Projects> {
     }
 
     @Override
-    public boolean create(Projects entity) {
+    public void create(Projects entity) {
         try {
             INSERT_PROJECT.setString(1, entity.getName());
             INSERT_PROJECT.setString(2, entity.getDescription());
-            INSERT_PROJECT.setInt(3, entity.getCompany_id());
-            INSERT_PROJECT.setInt(4, entity.getCustomer_id());
             INSERT_PROJECT.setDate(5, entity.getCreationDate());
-
-            return INSERT_PROJECT.executeUpdate() == 1;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
     }
 
     @Override
@@ -93,8 +90,6 @@ public class ProjectsDao implements ServiceCrud<Projects> {
             UPDATE_PROJECT.setInt(1, entity.getId());
             UPDATE_PROJECT.setString(2, entity.getName());
             UPDATE_PROJECT.setString(3, entity.getDescription());
-            UPDATE_PROJECT.setInt(4, entity.getCompany_id());
-            UPDATE_PROJECT.setInt(5, entity.getCustomer_id());
             UPDATE_PROJECT.setInt(6, entity.getId());
 
             return UPDATE_PROJECT.executeUpdate() == 1;
@@ -122,8 +117,6 @@ public class ProjectsDao implements ServiceCrud<Projects> {
         project.setName(rs.getString("name"));
         project.setDescription(rs.getString("description"));
         project.setCost(rs.getInt("cost"));
-        project.setCompany_id(rs.getInt("company_id"));
-        project.setCustomer_id(rs.getInt("customer_id"));
         return project;
     }
 

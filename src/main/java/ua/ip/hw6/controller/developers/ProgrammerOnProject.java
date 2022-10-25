@@ -19,7 +19,6 @@ public class ProgrammerOnProject extends HttpServlet {
     @Override
     public void init() throws ServletException {
         DatabaseSqlManagerConnector initConnection = DatabaseInitConnection.getInitService();
-        developersDao = new DevelopersDao(initConnection);
     }
 
     @Override
@@ -29,11 +28,11 @@ public class ProgrammerOnProject extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Integer projectId = Integer.valueOf(req.getParameter("projectId"));
-
-        List<Developers> developers =  developersDao.showProgrammerOnProjectFromProjectId(projectId);
-        req.setAttribute("developers", developers);
-        req.getRequestDispatcher("/WEB-INF/jsp/developers/programmerOnProject.jsp").forward(req, resp);
+//        Integer projectId = Integer.valueOf(req.getParameter("projectId"));
+//
+//        List<Developers> developers =  developersDao.showProgrammerOnProjectFromProjectId(projectId);
+//        req.setAttribute("developers", developers);
+//        req.getRequestDispatcher("/WEB-INF/jsp/developers/programmerOnProject.jsp").forward(req, resp);
     }
 
 }

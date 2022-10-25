@@ -18,7 +18,6 @@ public class UpdateDevelopers extends HttpServlet {
     @Override
     public void init() throws ServletException {
         DatabaseSqlManagerConnector initConnection = DatabaseInitConnection.getInitService();
-        developersDao = new DevelopersDao(initConnection);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,8 +32,8 @@ public class UpdateDevelopers extends HttpServlet {
         developer.setAge(developerAge);
         developer.setSex(developerSex);
         developer.setSalary(developerSalary);
-        if (developersDao.update(developer)) {
-            req.getRequestDispatcher("/WEB-INF/jsp/developers/updateDevelopers.jsp").forward(req, resp);
-        }
+        developersDao.update(developer);
+        req.getRequestDispatcher("/WEB-INF/jsp/developers/updateDevelopers.jsp").forward(req, resp);
+
     }
 }

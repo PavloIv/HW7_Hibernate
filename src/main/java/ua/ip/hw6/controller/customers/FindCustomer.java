@@ -1,11 +1,9 @@
 package ua.ip.hw6.controller.customers;
 
 import ua.ip.hw6.dao.CustomerDao;
-import ua.ip.hw6.dao.DevelopersDao;
 import ua.ip.hw6.storage.DatabaseInitConnection;
 import ua.ip.hw6.storage.DatabaseSqlManagerConnector;
 import ua.ip.hw6.table.Customers;
-import ua.ip.hw6.table.Developers;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

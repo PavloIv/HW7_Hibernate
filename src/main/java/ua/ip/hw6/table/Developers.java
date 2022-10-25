@@ -1,82 +1,38 @@
 package ua.ip.hw6.table;
 
-import java.util.Objects;
+import lombok.*;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "developers")
+@ToString
+@Getter
+@Setter
+@NoArgsConstructor
 public  class Developers {
+    @Id @GeneratedValue
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "age")
     private Integer age;
+    @Column(name = "sex")
     private String sex;
+    @Column(name = "salary")
     private Integer salary;
 
-    public Developers() {
-    }
+    @Setter(AccessLevel.PRIVATE)
+    @ManyToMany(mappedBy = "developers" )
+    public List<Skills> skills = new ArrayList<>();
 
-    public Developers(Integer id, String name, Integer age, String sex, Integer salary) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-        this.sex = sex;
-        this.salary = salary;
-    }
+    @Setter(AccessLevel.PRIVATE)
+    @ManyToMany(mappedBy = "developers")
+    public List<Projects> projects = new ArrayList<>();
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public Integer getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Integer salary) {
-        this.salary = salary;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Developers that = (Developers) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(age, that.age) &&
-                Objects.equals(sex, that.sex) && Objects.equals(salary, that.salary);
-    }
-
-    @Override
-    public String toString() {
-        return  "\n" + "{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", sex='" + sex + '\'' +
-                ", salary=" + salary +
-                '}' + "\n";
-    }
 }

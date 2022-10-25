@@ -3,7 +3,6 @@ package ua.ip.hw6.dao;
 import ua.ip.hw6.storage.DatabaseSqlManagerConnector;
 import ua.ip.hw6.table.Companies;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,15 +37,13 @@ public class CompaniesDAO implements ServiceCrud<Companies> {
     }
 
     @Override
-    public boolean create(Companies entity) {
+    public void create(Companies entity) {
         try {
             INSERT_COMPANY.setString(1, entity.getName());
-            INSERT_COMPANY.setInt(2, entity.getYear_of_foundation());
-            return INSERT_COMPANY.executeUpdate() == 1;
+            INSERT_COMPANY.setInt(2, entity.getYearOfFoundation());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
     }
 
     @Override
@@ -84,7 +81,7 @@ public class CompaniesDAO implements ServiceCrud<Companies> {
         try {
             UPDATE_COMPANY.setInt(1, entity.getId());
             UPDATE_COMPANY.setString(2, entity.getName());
-            UPDATE_COMPANY.setInt(3, entity.getYear_of_foundation());
+            UPDATE_COMPANY.setInt(3, entity.getYearOfFoundation());
             UPDATE_COMPANY.setInt(4, entity.getId());
 
             return UPDATE_COMPANY.executeUpdate() == 1;
@@ -111,7 +108,7 @@ public class CompaniesDAO implements ServiceCrud<Companies> {
         try {
             companies.setId(resultSet.getInt("id"));
             companies.setName(resultSet.getString("name"));
-            companies.setYear_of_foundation(resultSet.getInt("year_of_foundation"));
+            companies.setYearOfFoundation(resultSet.getInt("year_of_foundation"));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -30,8 +30,8 @@ public class CreateSkill extends HttpServlet {
         skill.setLanguage(language);
         skill.setLevel(level);
 
-        if (skillsDao.create(skill)) {
-            req.getRequestDispatcher("/WEB-INF/jsp/skills/createSkill.jsp").forward(req, resp);
-        }
+        skillsDao.create(skill);
+        req.getRequestDispatcher("/WEB-INF/jsp/skills/createSkill.jsp").forward(req, resp);
+
     }
 }

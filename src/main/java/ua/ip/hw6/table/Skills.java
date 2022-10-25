@@ -1,59 +1,35 @@
 package ua.ip.hw6.table;
 
+import lombok.*;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "skills")
+@ToString
+@Getter
+@Setter
+@NoArgsConstructor
 public class Skills {
+    @Id @GeneratedValue
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "language")
     private String language;
+    @Column(name = "level")
     private String level;
 
-    public Skills(Integer id, String language, String level) {
-        this.id = id;
-        this.language = language;
-        this.level = level;
-    }
+    @Setter(AccessLevel.PRIVATE)
+    @ManyToMany
+    @JoinTable(
+            name = "developers_skills",
+            joinColumns = @JoinColumn(name = "skill_id"),
+            inverseJoinColumns = @JoinColumn(name = "developer_id")
+    )
+    public List<Developers> developers = new ArrayList<>();
 
-    public Skills() {
-    }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Skills skills = (Skills) o;
-        return Objects.equals(id, skills.id) && Objects.equals(language, skills.language) && Objects.equals(level, skills.level);
-    }
-
-    @Override
-    public String toString() {
-        return  "\n" + "{" +
-                "id=" + id +
-                ", language='" + language + '\'' +
-                ", level='" + level + '\'' +
-                '}'+ '\n';
-    }
 }
