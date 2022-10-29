@@ -32,7 +32,7 @@
                             <c:out value="${company.name}"/>
                         </td>
                         <td>
-                            <c:out value="${company.year_of_foundation}"/>
+                            <c:out value="${company.yearOfFoundation}"/>
                         </td>
                     </tr>
         </table>

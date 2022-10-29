@@ -11,7 +11,7 @@
     </head>
     <body>
         <c:import url="${contextPath}/WEB-INF/jsp/navigation.jsp"/>
-        <form action="/developers/salaryOnProject" method="post">
+        <form action="/developers/salaryOnProject">
             <label for="developerId"> developer id: </label><br>
             <input type="text" id="developerId" name="developerId"><br>
 

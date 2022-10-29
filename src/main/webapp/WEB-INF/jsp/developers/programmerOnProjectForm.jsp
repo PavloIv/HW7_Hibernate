@@ -10,7 +10,7 @@
     </head>
     <body>
         <c:import url="${contextPath}/WEB-INF/jsp/navigation.jsp"/>
-        <form action="/developers/programmerOnProject" method="post">
+        <form action="/developers/programmerOnProject">
             <label for="projectId"> developer id: </label><br>
             <input type="text" id="projectId" name="projectId"><br>
 

@@ -10,9 +10,9 @@
                 <li><a href="/developers/findDevelopersForm">Find</a></li>
                 <li><a href="/developers/updateDevelopersForm">Update</a></li>
                 <li><a href="/developers/deleteDevelopersForm">Delete</a></li>
-                <li><a href="/developers/salaryOnProject">SalaryOnProject</a></li>
-                <li><a href="/developers/programmerOnProject">ProgrammerOnProject</a></li>
-                <li><a href="/developers/programmerOnLanguage">ProgrammerOnLanguage</a></li>
+                <li><a href="/developers/salaryOnProjectForm">SalaryOnProject</a></li>
+                <li><a href="/developers/programmerOnProjectForm">ProgrammerOnProject</a></li>
+                <li><a href="/developers/programmerOnLanguageForm">ProgrammerOnLanguage</a></li>
             </ul>
                 </li>
                 <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> Companies <span class="caret"></span></a>

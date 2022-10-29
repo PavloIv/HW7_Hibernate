@@ -13,11 +13,11 @@
         <property name="format_sql">true</property>
         <property name="enable_lazy_load_no_trans">true</property>
 
-        <mapping class="ua.ip.hw6.table.Developers"/>
-        <mapping class="ua.ip.hw6.table.Projects"/>
-        <mapping class="ua.ip.hw6.table.Skills"/>
-        <mapping class="ua.ip.hw6.table.Companies"/>
-        <mapping class="ua.ip.hw6.table.Customers"/>
+        <mapping class="ua.ip.hw7.table.Developers"/>
+        <mapping class="ua.ip.hw7.table.Projects"/>
+        <mapping class="ua.ip.hw7.table.Skills"/>
+        <mapping class="ua.ip.hw7.table.Companies"/>
+        <mapping class="ua.ip.hw7.table.Customers"/>
     </session-factory>
 </hibernate-configuration>
 

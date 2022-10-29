@@ -25,8 +25,6 @@
                         <th >name:</th>
                         <th >description:</th>
                         <th >cost:</th>
-                        <th >company_id:</th>
-                        <th >customer_id:</th>
                     </tr>
                     <tr>
                         <td >
@@ -41,13 +39,6 @@
                         <td >
                             <c:out value="${project.cost}"/>
                         </td>
-                        <td >
-                            <c:out value="${project.company_id}"/>
-                        </td>
-                        <td >
-                            <c:out value="${project.customer_id}"/>
-                        </td>
-
                     </tr>
         </table>
     </body>
