@@ -57,8 +57,11 @@ public class CompaniesDAO implements ServiceCrud<Companies> {
     }
     public List<Integer> findAllId() {
         try (Session session = sessionManager.openSession()){
-            return new ArrayList<>(session.createQuery("SELECT  DISTINCT c.id FROM Companies c ORDER BY c.id")
+            Transaction transaction = session.beginTransaction();
+            List<Integer> companyIds= new ArrayList<>(session.createQuery("SELECT  DISTINCT c.id FROM Companies c ORDER BY c.id")
                     .getResultList());
+            transaction.commit();
+            return companyIds;
         }catch (Exception exception){
             exception.printStackTrace();
         }

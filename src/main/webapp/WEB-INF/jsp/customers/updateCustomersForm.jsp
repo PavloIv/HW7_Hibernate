@@ -20,9 +20,9 @@
             </select><br>
 
             <label for="customerName"> customer name: </label><br>
-            <input type="text" id="customerName" name="customerName"><br>
+            <input type="text" id="customerName" name="customerName" required><br>
             <label for="customerWebsite"> customer website: </label><br>
-            <input type="text" id="customerWebsite" name="customerWebsite"><br>
+            <input type="text" id="customerWebsite" name="customerWebsite" required><br>
 
             <button type="submit">Update</button>
         </form>

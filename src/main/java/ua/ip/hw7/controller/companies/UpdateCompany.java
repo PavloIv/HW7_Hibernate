@@ -1,6 +1,7 @@
 package ua.ip.hw7.controller.companies;
 
 import ua.ip.hw7.dao.CompaniesDAO;
+import ua.ip.hw7.storage.HibernateProvider;
 import ua.ip.hw7.table.Companies;
 
 import javax.servlet.ServletException;
@@ -13,9 +14,11 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/companies/updateCompany")
 public class UpdateCompany extends HttpServlet {
-    CompaniesDAO companiesDAO;
+    private CompaniesDAO companiesDAO;
     @Override
     public void init() throws ServletException {
+        HibernateProvider dbProvider = new HibernateProvider();
+        companiesDAO = new CompaniesDAO(dbProvider);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

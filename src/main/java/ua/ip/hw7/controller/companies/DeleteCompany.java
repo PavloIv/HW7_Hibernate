@@ -27,6 +27,6 @@ public class DeleteCompany extends HttpServlet {
 
         Integer companyId = Integer.valueOf(req.getParameter("companyId"));
         companiesDAO.delete(companyId);
-        req.getRequestDispatcher("/WEB-INF/jsp/companies/deleteCompany.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(req, resp);
     }
 }

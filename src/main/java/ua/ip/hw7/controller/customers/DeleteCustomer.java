@@ -27,6 +27,6 @@ public class DeleteCustomer extends HttpServlet {
 
         Integer customerId = Integer.valueOf(req.getParameter("customerId"));
         customerDao.delete(customerId);
-        req.getRequestDispatcher("/WEB-INF/jsp/customers/deleteCustomer.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(req, resp);
     }
 }

@@ -20,9 +20,9 @@
             </select><br>
 
             <label for="companyName"> company name: </label><br>
-            <input type="text" id="companyName" name="companyName"><br>
+            <input type="text" id="companyName" name="companyName" required><br>
             <label for="companyYearFoundation"> company year of foundation: </label><br>
-            <input type="text" id="companyYearFoundation" name="companyYearFoundation"><br>
+            <input type="text" id="companyYearFoundation" name="companyYearFoundation" required><br>
 
             <button type="submit">Update</button>
         </form>

@@ -27,6 +27,6 @@ public class DeleteDevelopers extends HttpServlet {
 
         Integer developerId = Integer.valueOf(req.getParameter("developerId"));
         developersDao.delete(developerId);
-        req.getRequestDispatcher("/WEB-INF/jsp/developers/deleteDevelopers.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(req, resp);
     }
 }

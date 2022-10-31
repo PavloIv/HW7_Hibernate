@@ -12,13 +12,13 @@
         <c:import url="${contextPath}/WEB-INF/jsp/navigation.jsp"/>
         <form action="/projects/createProject" method="post">
             <label for="projectName"> project name: </label><br>
-            <input type="text" id="projectName" name="projectName"><br>
+            <input type="text" id="projectName" name="projectName" required><br>
             <label for="projectDescription"> project description: </label><br>
-            <input type="text" id="projectDescription" name="projectDescription"><br>
+            <input type="text" id="projectDescription" name="projectDescription" required><br>
             <label for="companyId"> company id: </label><br>
-            <input type="text" id="companyId" name="companyId"><br>
+            <input type="text" id="companyId" name="companyId" required><br>
             <label for="customerId"> company id: </label><br>
-            <input type="text" id="customerId" name="customerId"><br>
+            <input type="text" id="customerId" name="customerId" required><br>
 
             <button type="submit">Create</button>
         </form>

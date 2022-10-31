@@ -22,7 +22,7 @@ public class UpdateCustomer extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Integer> customerIds = customerDao.findAllId();
         req.setAttribute("customerIds", customerIds);
 

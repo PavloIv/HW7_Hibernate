@@ -12,9 +12,9 @@
         <c:import url="${contextPath}/WEB-INF/jsp/navigation.jsp"/>
         <form action="/skills/createSkill" method="post">
             <label for="language"> language: </label><br>
-            <input type="text" id="language" name="language"><br>
+            <input type="text" id="language" name="language" required><br>
             <label for="level"> level: </label><br>
-            <input type="text" id="level" name="level"><br>
+            <input type="text" id="level" name="level" required><br>
 
             <button type="submit">Create</button>
         </form>

@@ -20,9 +20,9 @@
             </select><br>
 
             <label for="language"> language: </label><br>
-            <input type="text" id="language" name="language"><br>
+            <input type="text" id="language" name="language" required><br>
             <label for="level"> level: </label><br>
-            <input type="text" id="level" name="level"><br>
+            <input type="text" id="level" name="level" required><br>
 
             <button type="submit">Update</button>
         </form>

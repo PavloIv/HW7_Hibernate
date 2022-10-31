@@ -26,6 +26,6 @@ public class DeleteSkill extends HttpServlet {
 
         Integer skillId = Integer.valueOf(req.getParameter("skillId"));
         skillsDao.delete(skillId);
-        req.getRequestDispatcher("/WEB-INF/jsp/developers/deleteDevelopers.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(req, resp);
     }
 }

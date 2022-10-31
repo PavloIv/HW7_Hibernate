@@ -27,6 +27,6 @@ public class DeleteProject extends HttpServlet {
 
         Integer projectId = Integer.valueOf(req.getParameter("projectId"));
         projectsDao.delete(projectId);
-        req.getRequestDispatcher("/WEB-INF/jsp/projects/deleteProject.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(req, resp);
     }
 }

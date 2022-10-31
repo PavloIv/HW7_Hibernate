@@ -10,7 +10,7 @@
     </head>
     <body>
         <c:import url="${contextPath}/WEB-INF/jsp/navigation.jsp"/>
-        <form action="/developers/updateDevelopers" method="post">
+        <form action="/developers/updateDevelopers">
             <label for="developerId"> developer id: </label><br>
             <select input class="form-select" id="developerId" name="developerId" required aria-label="select example">
             <option value="">Id</option>
@@ -20,13 +20,20 @@
             </select><br>
 
             <label for="developerName"> developer name: </label><br>
-            <input type="text" id="developerName" name="developerName"><br>
+            <input type="text" id="developerName" name="developerName" required><br>
+
             <label for="developerAge"> developer age: </label><br>
-            <input type="text" id="developerAge" name="developerAge"><br>
+            <input type="text" id="developerAge" name="developerAge" required><br>
+
             <label for="developerSex"> developer sex: </label><br>
-            <input type="text" id="developerSex" name="developerSex"><br>
+            <select input class="form-select" id="developerSex" name="developerSex" required aria-label="select example">
+            <option value="">developer sex</option>
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+            </select><br>
+
             <label for="developerSalary"> developer salary: </label><br>
-            <input type="text" id="developerSalary" name="developerSalary"><br>
+            <input type="text" id="developerSalary" name="developerSalary" required><br>
 
             <button type="submit">Update</button>
         </form>
