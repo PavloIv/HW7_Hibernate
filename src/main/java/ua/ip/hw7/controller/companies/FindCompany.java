@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/companies/findCompany")
 public class FindCompany extends HttpServlet {
@@ -24,6 +25,9 @@ public class FindCompany extends HttpServlet {
     @SneakyThrows
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Integer> companyIds = companiesDAO.findAllId();
+        req.setAttribute("companyIds", companyIds);
+
         String companyId = req.getParameter("companyId");
         Companies company = companiesDAO.findById(Integer.valueOf(companyId));
         req.setAttribute("company", company);

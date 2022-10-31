@@ -7,8 +7,7 @@ import ua.ip.hw7.table.Developers;
 
 import javax.persistence.Query;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class DevelopersDao implements ServiceCrud<Developers> {
     private final HibernateProvider sessionManager;
@@ -54,17 +53,37 @@ public class DevelopersDao implements ServiceCrud<Developers> {
         }
     }
 
-        public Integer calculateSalaryOnProjectFromId(Integer projectId) {
+    public List<Developers> findAll() {
+        try (Session session = sessionManager.openSession()){
+            return new ArrayList<>(session.createQuery("SELECT d FROM Developers d",Developers.class)
+                    .getResultList());
+                }catch (Exception exception){
+            exception.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<Integer> findAllId() {
+        try (Session session = sessionManager.openSession()){
+            return new ArrayList<>(session.createQuery("SELECT  DISTINCT d.id FROM Developers d ORDER BY d.id")
+                    .getResultList());
+        }catch (Exception exception){
+            exception.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public Integer calculateSalaryOnProjectFromId(Integer projectId) {
             try (Session session = sessionManager.openSession()){
                 Transaction transaction = session.beginTransaction();
                 Query query = session.createQuery("SELECT SUM(d.salary) FROM Developers d " +
                         "JOIN d.projects p WHERE p.id = :projectId").setParameter("projectId",projectId);
                 transaction.commit();
 
-
                 return Integer.valueOf(String.valueOf(query.getResultList().get(0)));
             }
     }
+
     public List<Developers> showProgrammerOnProjectFromProjectId(Integer projectId) {
         try (Session session = sessionManager.openSession()) {
             Transaction transaction = session.beginTransaction();
@@ -74,7 +93,6 @@ public class DevelopersDao implements ServiceCrud<Developers> {
             transaction.commit();
 
             return new ArrayList<Developers>(query.getResultList());
-
         }
     }
 
@@ -87,7 +105,7 @@ public class DevelopersDao implements ServiceCrud<Developers> {
             transaction.commit();
 
             return new ArrayList<Developers>(query.getResultList());
-
         }
     }
+
 }

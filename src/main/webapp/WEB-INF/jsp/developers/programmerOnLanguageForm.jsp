@@ -11,10 +11,15 @@
     <body>
         <c:import url="${contextPath}/WEB-INF/jsp/navigation.jsp"/>
         <form action="/developers/programmerOnLanguage">
-            <label for="language"> developer id: </label><br>
-            <input type="text" id="language" name="language"><br>
-
+            <label for="language"> language: </label><br>
+            <select input class="form-select" id="language" name="language" required aria-label="select example">
+            <option value="">language in DB</option>
+            <c:forEach var = "language" items="${languages}">
+                    <option value="${language}">${language}</option>
+            </c:forEach><br>
+            </select><br>
             <button type="submit">Find</button>
         </form>
     </body>
 </html>
+

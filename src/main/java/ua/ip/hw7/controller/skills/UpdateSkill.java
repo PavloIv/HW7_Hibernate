@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/skills/updateSkill")
 public class UpdateSkill extends HttpServlet {
@@ -23,6 +24,9 @@ public class UpdateSkill extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Integer> skillIds = skillsDao.findAllId();
+        req.setAttribute("skillIds", skillIds);
+
         Integer skillId = Integer.valueOf(req.getParameter("skillId"));
         String language = req.getParameter("language");
         String level = req.getParameter("level");

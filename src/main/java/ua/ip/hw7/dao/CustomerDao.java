@@ -7,6 +7,8 @@ import ua.ip.hw7.storage.HibernateProvider;
 import ua.ip.hw7.table.Customers;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerDao implements ServiceCrud<Customers>{
     private final HibernateProvider sessionManager;
@@ -49,4 +51,16 @@ public class CustomerDao implements ServiceCrud<Customers>{
             session.delete(customer);
             transaction.commit();
         }
-    }}
+    }
+
+    public List<Integer> findAllId() {
+        try (Session session = sessionManager.openSession()){
+            return new ArrayList<>(session.createQuery("SELECT DISTINCT c.id FROM Customers c ORDER BY c.id")
+                    .getResultList());
+        }catch (Exception exception){
+            exception.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+}

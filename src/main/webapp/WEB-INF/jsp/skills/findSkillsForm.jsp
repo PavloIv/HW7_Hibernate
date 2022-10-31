@@ -12,7 +12,12 @@
         <c:import url="${contextPath}/WEB-INF/jsp/navigation.jsp"/>
         <form action="/skills/findSkill">
             <label for="skillId"> skill id: </label><br>
-            <input type="text" id="skillId" name="skillId"><br>
+            <select input class="form-select" id="skillId" name="skillId" required aria-label="select example">
+            <option value="">Id</option>
+            <c:forEach var = "skillId" items="${skillIds}">
+                    <option value="${skillId}">${skillId}</option>
+            </c:forEach><br>
+            </select><br>
 
             <button type="submit">Find</button>
         </form>

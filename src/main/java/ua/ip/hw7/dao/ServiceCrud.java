@@ -11,4 +11,5 @@ public interface ServiceCrud<T> {
     void update(T entity);
 
     void delete(Integer id);
+
 }

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/developers/findDevelopers")
 public class FindDeveloper extends HttpServlet {
@@ -24,6 +25,9 @@ public class FindDeveloper extends HttpServlet {
     @SneakyThrows
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Integer> developerIds = developersDao.findAllId();
+        req.setAttribute("developerIds", developerIds);
+
         String developerId = req.getParameter("developerId");
         Developers developers = developersDao.findById(Integer.valueOf(developerId));
         req.setAttribute("developers", developers);

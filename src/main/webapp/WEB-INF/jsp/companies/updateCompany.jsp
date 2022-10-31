@@ -12,7 +12,13 @@
         <c:import url="${contextPath}/WEB-INF/jsp/navigation.jsp"/>
         <form action="/companies/updateCompany" method="post">
             <label for="companyId"> company id: </label><br>
-            <input type="text" id="companyId" name="companyId"><br>
+            <select input class="form-select" id="companyId" name="companyId" required aria-label="select example">
+            <option value="">Id</option>
+            <c:forEach var = "companyId" items="${companyIds}">
+                    <option value="${companyId}">${companyId}</option>
+            </c:forEach><br>
+            </select><br>
+
             <label for="companyName"> company name: </label><br>
             <input type="text" id="companyName" name="companyName"><br>
             <label for="companyYearFoundation"> company year of foundation: </label><br>

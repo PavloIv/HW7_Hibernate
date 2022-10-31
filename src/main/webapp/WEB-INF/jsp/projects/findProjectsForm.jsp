@@ -11,8 +11,14 @@
     <body>
         <c:import url="${contextPath}/WEB-INF/jsp/navigation.jsp"/>
         <form action="/projects/findProject">
+
             <label for="projectId"> project id: </label><br>
-            <input type="text" id="projectId" name="projectId"><br>
+            <select input class="form-select" id="projectId" name="projectId" required aria-label="select example">
+            <option value="">Id</option>
+            <c:forEach var = "projectId" items="${projectIds}">
+                    <option value="${projectId}">${projectId}</option>
+            </c:forEach><br>
+            </select><br>
 
             <button type="submit">Find</button>
         </form>

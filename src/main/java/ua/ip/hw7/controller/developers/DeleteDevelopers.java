@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/developers/deleteDevelopers")
 public class DeleteDevelopers extends HttpServlet {
@@ -21,6 +22,9 @@ public class DeleteDevelopers extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Integer> developerIds = developersDao.findAllId();
+        req.setAttribute("developerIds", developerIds);
+
         Integer developerId = Integer.valueOf(req.getParameter("developerId"));
         developersDao.delete(developerId);
         req.getRequestDispatcher("/WEB-INF/jsp/developers/deleteDevelopers.jsp").forward(req, resp);

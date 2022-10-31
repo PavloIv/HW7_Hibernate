@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/skills/findSkill")
 public class FindSkill extends HttpServlet {
@@ -23,6 +24,9 @@ public class FindSkill extends HttpServlet {
     @SneakyThrows
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Integer> skillIds = skillsDao.findAllId();
+        req.setAttribute("skillIds", skillIds);
+
         String skillId = req.getParameter("skillId");
         Skills skill = skillsDao.findById(Integer.valueOf(skillId));
         req.setAttribute("skill", skill);

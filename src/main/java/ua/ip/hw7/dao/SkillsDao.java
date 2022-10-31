@@ -6,6 +6,8 @@ import ua.ip.hw7.storage.HibernateProvider;
 import ua.ip.hw7.table.Skills;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SkillsDao implements ServiceCrud<Skills> {
     private final HibernateProvider sessionManager;
@@ -49,5 +51,26 @@ public class SkillsDao implements ServiceCrud<Skills> {
             session.delete(skill);
             transaction.commit();
         }
+    }
+
+    public List<String> findAllLanguage() {
+        try (Session session = sessionManager.openSession()){
+            return new ArrayList<>(session.createQuery("SELECT  DISTINCT s.language FROM Skills s")
+                    .getResultList());
+        }catch (Exception exception){
+            exception.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public List<Integer> findAllId() {
+        try (Session session = sessionManager.openSession()){
+
+            return new ArrayList<>(session.createQuery("SELECT  DISTINCT p.id FROM Skills p ORDER BY p.id")
+                    .getResultList());
+        }catch (Exception exception){
+            exception.printStackTrace();
+        }
+        return new ArrayList<>();
     }
 }

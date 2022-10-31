@@ -12,7 +12,13 @@
         <c:import url="${contextPath}/WEB-INF/jsp/navigation.jsp"/>
         <form action="/project/updateProject" method="post">
             <label for="projectId"> project id: </label><br>
-            <input type="text" id="projectId" name="projectId"><br>
+            <select input class="form-select" id="projectId" name="projectId" required aria-label="select example">
+            <option value="">Id</option>
+            <c:forEach var = "projectId" items="${projectIds}">
+                    <option value="${projectId}">${projectId}</option>
+            </c:forEach><br>
+            </select><br>
+
             <label for="projectName"> project name: </label><br>
             <input type="text" id="projectName" name="projectName"><br>
             <label for="projectDescription"> project description: </label><br>

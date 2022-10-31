@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/project/updateProject")
 public class UpdateProject extends HttpServlet {
@@ -22,6 +23,9 @@ public class UpdateProject extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Integer> projectIds = projectsDao.findAllId();
+        req.setAttribute("projectIds", projectIds);
+
         Integer projectId = Integer.valueOf(req.getParameter("projectId"));
         String projectName = req.getParameter("projectName");
         String  projectDescription = req.getParameter("projectDescription");

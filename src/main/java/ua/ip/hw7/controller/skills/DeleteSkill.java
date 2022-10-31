@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/skills/deleteSkill")
 public class DeleteSkill extends HttpServlet {
@@ -20,6 +21,9 @@ public class DeleteSkill extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Integer> skillIds = skillsDao.findAllId();
+        req.setAttribute("skillIds", skillIds);
+
         Integer skillId = Integer.valueOf(req.getParameter("skillId"));
         skillsDao.delete(skillId);
         req.getRequestDispatcher("/WEB-INF/jsp/developers/deleteDevelopers.jsp").forward(req, resp);

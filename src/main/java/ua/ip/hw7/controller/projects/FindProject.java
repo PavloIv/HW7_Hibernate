@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/projects/findProject")
 public class FindProject extends HttpServlet {
@@ -24,6 +25,9 @@ public class FindProject extends HttpServlet {
     @SneakyThrows
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Integer> projectIds = projectsDao.findAllId();
+        req.setAttribute("projectIds", projectIds);
+
         String projectId = req.getParameter("projectId");
         Projects project = projectsDao.findById(Integer.valueOf(projectId));
         req.setAttribute("project", project);

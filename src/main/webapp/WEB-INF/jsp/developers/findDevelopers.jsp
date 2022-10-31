@@ -13,7 +13,12 @@
         <c:import url="${contextPath}/WEB-INF/jsp/navigation.jsp"/>
         <form action="/developers/findDevelopers">
             <label for="developerId"> developer id: </label><br>
-            <input type="text" id="developerId" name="developerId"><br>
+            <select input class="form-select" id="developerId" name="developerId" required aria-label="select example">
+            <option value="">Id</option>
+            <c:forEach var = "developerId" items="${developerIds}">
+                    <option value="${developerId}">${developerId}</option>
+            </c:forEach><br>
+            </select><br>
 
             <button type="submit">Find</button>
         </form>

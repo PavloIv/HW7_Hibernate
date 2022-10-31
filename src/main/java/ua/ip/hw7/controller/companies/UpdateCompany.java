@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/companies/updateCompany")
 public class UpdateCompany extends HttpServlet {
@@ -18,6 +19,9 @@ public class UpdateCompany extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Integer> companyIds = companiesDAO.findAllId();
+        req.setAttribute("companyIds", companyIds);
+
         Integer companyId = Integer.valueOf(req.getParameter("companyId"));
         String companyName = req.getParameter("companyName");
         Integer companyYearFoundation = Integer.valueOf(req.getParameter("companyYearFoundation"));
